@@ -11,6 +11,14 @@ SECTIONS
 		*.o(.OPStartVectorCaller)
 		. = ALIGN(1);
 	} 
+	
+	. = 0x80BCFA8;
+	.SkipNintendoOP :
+	{
+		*.o(.SkipNintendoOP)
+		. = ALIGN(1);
+	}
+	
 	. = 0x23*4+0x8C1071C;
 	.ApocalypseEntry :
 	{

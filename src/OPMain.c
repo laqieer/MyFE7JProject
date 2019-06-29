@@ -25,9 +25,23 @@
 #define IFBIOS				0x3007FF8
 #define VBlankIntrFlag			1
 
+void ffplayVideo(char *filename)
+{
+	asm volatile("mov r0, %0;"
+               "swi 0xf8;"
+               : // no ouput
+               : "r" (filename)
+               : "r0");
+}
+
 // 片头OP动画主程序
 //__attribute__((section(".OPMain")))
 void OPMain()
+{
+	ffplayVideo("FESoVOP.mkv");
+}
+
+void OPMainOld()
 {
 	int n = 1;
 	//开中断
